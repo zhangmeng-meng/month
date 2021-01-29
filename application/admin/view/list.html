@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td>商品编号</td>
+            <td>商品名称</td>
+            <td>商品图片</td>
+            <td>商品库存</td>
+            <td>商品价格</td>
+            <td>操作</td>
+        </tr>
+        {foreach $data as $v}
+        <tr>
+            <td>{$v.id}</td>
+            <td>{$v.name}</td>
+            <td><img src="{$v.img}" alt="" width="50px;"></td>
+            <td>{$v.number}</td>
+            <td>{$v.price}</td>
+            <td><a href="{:url('admin/Admin/del')}?id={$v.id}" class="he">删除</a></td>
+        </tr>
+        {/foreach}
+    </table>
+{$data->render()}
+</body>
+</html>
+<script>
+    $(function () {
+        $('.he').click(function () {
+            confirm('是否确认删除');
+        })
+    })
+</script>
